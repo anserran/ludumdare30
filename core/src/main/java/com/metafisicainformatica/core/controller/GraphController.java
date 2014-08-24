@@ -97,6 +97,7 @@ public class GraphController implements VarListener {
 			while (index == oldIndex) {
 				index = random.nextInt(currentNode.childrenCount());
 			}
+			notifySound("demon.mp3");
 		}
 		return index;
 	}

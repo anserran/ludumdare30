@@ -4,7 +4,7 @@
     "name": "It's your birthday!",
     "message": "Happy birthday!",
     "drawable": "sm-age",
-    "sound": "birthday.wav",
+    "sound": "birthday.mp3",
     "changes": {
       "age": 1
     }
@@ -28,6 +28,7 @@
   },
   {
     "id": "love",
+    "sound": "love.mp3",
     "message": "Love",
     "name": "+1",
     "drawable": "sm-love",
@@ -44,6 +45,7 @@
   },
   {
     "id": "money",
+    "sound": "money.mp3",
     "message": "Money",
     "name": "+1",
     "drawable": "sm-money",
@@ -60,6 +62,7 @@
   },
   {
     "id": "health",
+    "sound": "health.mp3",
     "message": "Health",
     "name": "+1",
     "drawable": "sm-health",

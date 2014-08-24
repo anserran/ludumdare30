@@ -1,0 +1,89 @@
+[
+  {
+    "id": "first-decision",
+    "choices": [
+      "love",
+      "health",
+      "money"
+    ],
+    "nextIds": [
+      "tut-4",
+      "tut-4",
+      "tut-4"
+    ],
+    "nextIndexes": [
+      0,
+      1,
+      2
+    ],
+    "message": "But then, you have to choose."
+  },
+  {
+    "id": "cross-choice",
+    "message": "Hmm, heavy traffic",
+    "choices": [
+      "nothing",
+      "cross-street"
+    ]
+  },
+  {
+    "id": "play-fire-demon",
+    "message": "Be careful...",
+    "hasDemon": "true",
+    "choices": [
+      "play-fire",
+      "nothing"
+    ]
+  },
+  {
+    "id": "love-health-money",
+    "choices": [
+      "love",
+      "health",
+      "money"
+    ]
+  },
+  {
+    "id": "go-to-gym-choice",
+    "probability": 0.5,
+    "repetitions": 4,
+    "choices": [
+      "go-to-gym",
+      "go-to-gym-not"
+    ],
+    "nextIds": [
+      "nothing",
+      "nothing"
+    ],
+    "nextIndexes": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": "work-more-choice",
+    "probability": 0.5,
+    "repetitions": -1,
+    "choices": [
+      "work-more",
+      "nothing"
+    ],
+    "nextIds": [
+      "nothing",
+      "nothing"
+    ],
+    "nextIndexes": [
+      0,
+      1
+    ]
+  },
+  {
+    "id": "marry-choice",
+    "probability": 0.1,
+    "repetitions": 3,
+    "choices": [
+      "wife",
+      "nothing"
+    ]
+  }
+]

@@ -1,0 +1,91 @@
+{
+  "com.badlogic.gdx.graphics.Color": {
+    "white": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0,
+      "a": 1.0
+    },
+    "hud-bg": {
+      "r": 0.75,
+      "g": 0.75,
+      "b": 0.75,
+      "a": 0.75
+    },
+    "instructions-bg": {
+      "r": 0.15,
+      "g": 0.15,
+      "b": 0.15,
+      "a": 0.85
+    },
+    "incident": {
+      "r": 0.25,
+      "g": 0.25,
+      "b": 0.25,
+      "a": 1.0
+    },
+    "step": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 0.0,
+      "a": 1.0
+    }
+  },
+  "com.badlogic.gdx.graphics.g2d.BitmapFont": {
+    "score": {
+      "file": "hvd36.fnt"
+    },
+    "top-score": {
+      "file": "hvd28.fnt"
+    },
+    "incident": {
+      "file": "hvd12.fnt"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Skin$TintedDrawable": {
+    "hud-bg": {
+      "name": "blank",
+      "color": "hud-bg"
+    },
+    "instructions-bg": {
+      "name": "blank",
+      "color": "instructions-bg"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "score": {
+      "font": "score",
+      "fontColor": "white"
+    },
+    "top-score": {
+      "font": "incident",
+      "fontColor": "instructions-bg"
+    },
+    "itemCount": {
+      "font": "score",
+      "fontColor": "white"
+    },
+    "itemSteps": {
+      "font": "score",
+      "fontColor": "step"
+    },
+    "instructions": {
+      "font": "score",
+      "fontColor": "white"
+    },
+    "incident": {
+      "font": "incident",
+      "fontColor": "incident"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ImageButton$ImageButtonStyle": {
+    "demon": {
+      "imageUp": "demon",
+      "up": "select-box"
+    },
+    "eye": {
+      "imageUp": "eye",
+      "up": "select-box"
+    }
+  }
+}

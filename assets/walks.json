@@ -1,0 +1,40 @@
+[
+  {
+    "id": "nothing",
+    "message": "",
+    "probability": 1.0,
+    "repetitions": -1
+  },
+  {
+    "id": "wife",
+    "item": "wife"
+  },
+  {
+    "id": "tut-1",
+    "message": "One day, you are born..."
+  },
+  {
+    "id": "tut-2",
+    "message": "Not many options in life. Well, you are baby."
+  },
+  {
+    "id": "tut-3",
+    "message": "Time passess, and you grow..."
+  },
+  {
+    "id": "tut-4",
+    "message": "Sometimes, they have small consequences..."
+  },
+  {
+    "id": "tut-5",
+    "message": "...and sometimes..."
+  },
+  {
+    "id": "tut-6",
+    "message": "Most of the times, our choices are ours"
+  },
+  {
+    "id": "tut-7",
+    "message": "Others, demons from other worlds decide for us"
+  }
+]

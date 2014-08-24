@@ -1,0 +1,13 @@
+<module rename-to='ludumdare30'>
+	<inherits name='com.badlogic.gdx.backends.gdx_backends_gwt' />
+
+	<source path='core'/>
+	<source path='html'/>
+
+	<public path="resources" />
+
+	<entry-point class='com.metafisicainformatica.html.LudumDareHtml'/>
+	<set-configuration-property name="gdx.assetpath" value="assets" />
+	<set-configuration-property name="gdx.assetoutputpath" value="html/target/webapp" />
+	<extend-configuration-property name="gdx.reflect.include" value="com.metafisicainformatica.core.model.happenings" />
+</module>

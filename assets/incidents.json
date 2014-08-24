@@ -1,0 +1,141 @@
+[
+  {
+    "id": "birthday",
+    "name": "It's your birthday!",
+    "message": "Happy birthday!",
+    "drawable": "sm-age",
+    "changes": {
+      "age": 1
+    }
+  },
+  {
+    "id": "see-demons",
+    "message": "But, from time to time, you can see the other world, and those demons (pressing \"S\")",
+    "drawable": "sm-demon",
+    "changes": {
+      "seeDemonsItems": 10,
+      "createDemons": 1
+    }
+  },
+  {
+    "id": "see-visibility",
+    "message": "You have a gift. You can see the future (pressing \"A\")",
+    "drawable": "sm-eye",
+    "changes": {
+      "highVisibilityItems": 10
+    }
+  },
+  {
+    "id": "love",
+    "message": "Love",
+    "name": "+1",
+    "drawable": "sm-love",
+    "probability": 1.0,
+    "repetitions": -1,
+    "changes": {
+      "love": 1
+    },
+    "influence": {
+      "love": 0.2,
+      "money": -0.1,
+      "health": 0.05
+    }
+  },
+  {
+    "id": "money",
+    "message": "Money",
+    "name": "+1",
+    "drawable": "sm-money",
+    "probability": 1.0,
+    "repetitions": -1,
+    "changes": {
+      "money": 1
+    },
+    "influence": {
+      "money": 0.5,
+      "love": -0.1,
+      "health": -0.05
+    }
+  },
+  {
+    "id": "health",
+    "message": "Health",
+    "name": "+1",
+    "drawable": "sm-health",
+    "probability": 1.0,
+    "repetitions": -1,
+    "changes": {
+      "health": 1
+    },
+    "influence": {
+      "love": 0.2,
+      "money": 0.1,
+      "health": 0.05
+    }
+  },
+  {
+    "id": "cross-street",
+    "name": "Cross street without looking",
+    "message": "Ouch!",
+    "probability": 0.1,
+    "repetitions": -1,
+    "changes": {
+      "health": -10
+    }
+  },
+  {
+    "id": "visibility",
+    "probability": 0.1,
+    "repetitions": 4,
+    "changes": {
+      "visibility": 1
+    }
+  },
+  {
+    "id": "car_crash",
+    "probability": 0.05,
+    "repetitions": 3,
+    "changes": {
+      "health": -100
+    },
+    "influence": {
+      "age": 0.1,
+      "money": 0.1
+    }
+  },
+  {
+    "changes": {
+      "money": 100
+    },
+    "id": "win_lottery",
+    "probability": 0.01,
+    "repetitions": 1
+  },
+  {
+    "id": "go-to-gym",
+    "changes": {
+      "health": 2,
+      "money": -5
+    }
+  },
+  {
+    "id": "go-to-gym-not",
+    "changes": {
+      "health": -1
+    }
+  },
+  {
+    "id": "work-more",
+    "changes": {
+      "health": -2,
+      "money": 5
+    }
+  },
+  {
+    "id": "play-fire",
+    "name": "Play with fire",
+    "changes": {
+      "health": -2
+    }
+  }
+]

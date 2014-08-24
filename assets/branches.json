@@ -1,0 +1,33 @@
+[
+  {
+    "id": "birthday-branch",
+    "probability": 0.0,
+    "repetitions": 0,
+    "nodes": [
+      "nothing",
+      "birthday",
+      "love-health-money"
+    ]
+  },
+  {
+    "id": "root-branch",
+    "nodes": [
+      "nothing",
+      "tut-1",
+      "tut-2",
+      "tut-3",
+      "birthday",
+      "birthday",
+      "birthday",
+      "first-decision",
+      "tut-5",
+      "cross-choice",
+      "tut-6",
+      "tut-7",
+      "play-fire-demon",
+      "see-demons",
+      "play-fire-demon",
+      "see-visibility"
+    ]
+  }
+]

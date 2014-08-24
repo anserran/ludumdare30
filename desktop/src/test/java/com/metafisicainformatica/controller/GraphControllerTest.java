@@ -43,6 +43,11 @@ public class GraphControllerTest {
 			}
 
 			@Override
+			public void sound(String sound) {
+
+			}
+
+			@Override
 			public void ended() {
 				counter++;
 				if (counter < 100) {

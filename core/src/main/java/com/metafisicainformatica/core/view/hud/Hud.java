@@ -70,6 +70,11 @@ public class Hud extends Table implements VarListener, NodeListener {
 	}
 
 	@Override
+	public void sound(String sound) {
+
+	}
+
+	@Override
 	public void ended() {
 
 	}

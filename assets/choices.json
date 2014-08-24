@@ -49,15 +49,7 @@
     "repetitions": 4,
     "choices": [
       "go-to-gym",
-      "go-to-gym-not"
-    ],
-    "nextIds": [
-      "nothing",
       "nothing"
-    ],
-    "nextIndexes": [
-      0,
-      1
     ]
   },
   {

@@ -4,8 +4,8 @@ import com.badlogic.gdx.ApplicationListener;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input.Keys;
 import com.badlogic.gdx.assets.AssetManager;
+import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.scenes.scene2d.InputEvent;
 import com.badlogic.gdx.scenes.scene2d.InputListener;
 import com.badlogic.gdx.scenes.scene2d.Stage;
@@ -35,14 +35,13 @@ public class LudumDare implements ApplicationListener {
 	private NodeRenderer nodeRenderer;
 	private Happenings happenings;
 	private AssetManager assetManager;
-	private ShapeRenderer shapeRenderer;
 	private Scene scene;
+	private boolean debug = true;
 
 
 	@Override
 	public void create() {
 		assetManager = new AssetManager();
-		shapeRenderer = new ShapeRenderer();
 		loadAssets();
 		Skin skin = assetManager.get("skin.json", Skin.class);
 
@@ -93,7 +92,7 @@ public class LudumDare implements ApplicationListener {
 						graphController.init();
 						break;
 					case Keys.A:
-						if (characterData.get(Var.highVisibility) <= 0 && characterData.get(Var.highVisibilityItems) > 0) {
+						if (debug || characterData.get(Var.highVisibility) <= 0 && characterData.get(Var.highVisibilityItems) > 0) {
 							characterData.inc(Var.highVisibilityItems, -1);
 							characterData.set(Var.visibility, 3);
 							characterData.set(Var.highVisibility, 10);
@@ -107,6 +106,13 @@ public class LudumDare implements ApplicationListener {
 						break;
 					case Keys.V:
 						characterData.inc(Var.visibility, 1);
+						break;
+					case Keys.K:
+						if (debug) {
+							for (int i = 0; i < 20; i++) {
+								graphController.nextNode(0);
+							}
+						}
 						break;
 				}
 				return true;
@@ -132,6 +138,11 @@ public class LudumDare implements ApplicationListener {
 			@Override
 			public void message(String message) {
 
+			}
+
+			@Override
+			public void sound(String sound) {
+				assetManager.get(sound, Sound.class).play();
 			}
 
 			@Override
@@ -168,10 +179,17 @@ public class LudumDare implements ApplicationListener {
 	public void dispose() {
 		assetManager.dispose();
 		stage.dispose();
-		shapeRenderer.dispose();
 	}
 
 	private void loadAssets() {
+		String[] sounds = new String[]{
+				"birthday"
+		};
+
+		for (String sound : sounds) {
+			assetManager.load(sound + ".wav", Sound.class);
+		}
+
 		assetManager.load("skin.json", Skin.class);
 		assetManager.finishLoading();
 	}

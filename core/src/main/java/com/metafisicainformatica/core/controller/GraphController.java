@@ -45,8 +45,8 @@ public class GraphController implements VarListener {
 
 		this.birthdayGenerator = new BirthdayGenerator(happenings);
 		randomGenerator.add(0.4f, new ChoicesGenerator(happenings));
-		randomGenerator.add(0.0f, new WalkGenerator(happenings));
-		randomGenerator.add(0.0f, new InicidentGenerator(happenings));
+		randomGenerator.add(0.1f, new WalkGenerator(happenings));
+		randomGenerator.add(0.6f, new InicidentGenerator(happenings));
 	}
 
 	public void init() {
@@ -154,7 +154,9 @@ public class GraphController implements VarListener {
 	}
 
 	private void notifySelected(Node parent, Node selected, boolean demon, boolean gotoNode) {
-		updateVisibleNodes(selected);
+		if (gotoNode) {
+			updateVisibleNodes(selected);
+		}
 		for (NodeListener listener : nodeListeners) {
 			listener.nodeSelected(parent, selected, demon, gotoNode);
 		}
@@ -185,6 +187,10 @@ public class GraphController implements VarListener {
 		}
 		if (selected != null && selected.getHappening() != null) {
 			notifyMessage(selected.getHappening().getMessage());
+			String sound = selected.getHappening().getSound();
+			if ( sound != null ){
+				notifySound(sound);
+			}
 		}
 	}
 
@@ -192,6 +198,12 @@ public class GraphController implements VarListener {
 	private void notifyMessage(String message) {
 		for (NodeListener listener : nodeListeners) {
 			listener.message(message);
+		}
+	}
+
+	private void notifySound(String sound) {
+		for (NodeListener listener : nodeListeners) {
+			listener.sound(sound);
 		}
 	}
 
@@ -212,6 +224,8 @@ public class GraphController implements VarListener {
 		void nodeSelected(Node parent, Node node, boolean demon, boolean gotoNode);
 
 		void message(String message);
+
+		void sound(String sound);
 
 		void ended();
 	}

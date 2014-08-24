@@ -12,6 +12,8 @@ public class Happening {
 
 	private String id;
 
+	private String sound;
+
 	private boolean hasDemon;
 
 	private int repetitions = 0;
@@ -30,6 +32,14 @@ public class Happening {
 
 	public boolean isHasDemon() {
 		return hasDemon;
+	}
+
+	public String getSound() {
+		return sound;
+	}
+
+	public void setSound(String sound) {
+		this.sound = sound;
 	}
 
 	public void setHasDemon(boolean hasDemon) {

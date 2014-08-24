@@ -49,6 +49,8 @@ public class Scene extends Group implements NodeListener {
 
 	private CharacterData characterData;
 
+	private Node selected;
+
 	public Scene(Skin skin, CharacterData characterData) {
 		this.skin = skin;
 		this.characterData = characterData;
@@ -97,6 +99,10 @@ public class Scene extends Group implements NodeListener {
 			Vector2 vector = new Vector2(column[0].getX() - parentActor.getX(), column[0].getY() - parentActor.getY());
 			Actor path = createPath(parentActor, vector, column[0].getWidth(), column[0].getHeight());
 			path.setName(parent.getId() + "->" + node.getId());
+			if (column.length == 3) {
+				path.setY(path.getY() + 40.0f);
+			}
+
 			paths.addActor(path);
 			// Add arrows keys
 			Actor arrow = createArrow(vector, parentActor, index, total);
@@ -105,9 +111,9 @@ public class Scene extends Group implements NodeListener {
 			arrows.addActor(arrow);
 
 
-			createAnimation(column[0], column[1], path);
+			createAnimation(column[0], column[1], path, column.length != 3);
 		} else {
-			createAnimation(column[0], column[1], null);
+			createAnimation(column[0], column[1], null, column.length != 3);
 		}
 	}
 
@@ -145,7 +151,7 @@ public class Scene extends Group implements NodeListener {
 		return arrow;
 	}
 
-	private void createAnimation(Actor column, Actor floor, Actor path) {
+	private void createAnimation(Actor column, Actor floor, Actor path, boolean animateColumn) {
 		float columnUpTime = 1f;
 		float pathTime = 2f;
 		float floorOffset = 10.0f;
@@ -153,9 +159,11 @@ public class Scene extends Group implements NodeListener {
 		float columnHeight = column.getHeight();
 		float floorY = floor.getY();
 
-		column.setHeight(0.0f);
-		floor.getColor().a = 0.0f;
-		floor.setY(floorY + floorOffset);
+		if (animateColumn) {
+			column.setHeight(0.0f);
+			floor.getColor().a = 0.0f;
+			floor.setY(floorY + floorOffset);
+		}
 
 		Action columnUp = Actions.addAction(Actions.sizeTo(column.getWidth(), columnHeight, columnUpTime, Interpolation.bounceOut), column);
 		Action floorDown = Actions.addAction(Actions.moveTo(floor.getX(), floorY, columnUpTime, Interpolation.bounceOut), floor);
@@ -166,7 +174,12 @@ public class Scene extends Group implements NodeListener {
 			float pathWidth = path.getWidth();
 			path.setWidth(0.0f);
 			Action extendPath = Actions.addAction(Actions.sizeTo(pathWidth, path.getHeight(), pathTime, Interpolation.exp10Out), path);
-			addAction(Actions.sequence(columnBuilt, extendPath));
+			if (animateColumn) {
+				addAction(Actions.sequence(columnBuilt, extendPath));
+			} else {
+				addAction(Actions.sequence(extendPath));
+			}
+
 		} else {
 			addAction(columnBuilt);
 		}
@@ -175,19 +188,14 @@ public class Scene extends Group implements NodeListener {
 	@Override
 	public void nodeSelected(Node parent, Node node, boolean demon, boolean gotoNode) {
 		if (gotoNode) {
+			if (parent != null) {
+				remove(parent.getId());
+			}
 			centerAt(node);
 			select(node);
 			for (Actor actor : arrows.getChildren()) {
 				if (node.getId().equals(actor.getName())) {
 					actor.setVisible(true);
-				}
-			}
-
-			if (parent != null) {
-				for (Actor actor : arrows.getChildren()) {
-					if (parent.getId().equals(actor.getName())) {
-						actor.setVisible(false);
-					}
 				}
 			}
 		}
@@ -207,8 +215,30 @@ public class Scene extends Group implements NodeListener {
 		}
 	}
 
+	private void remove(String id) {
+		goAway(floors.findActor(id));
+		goAway(columns.findActor(id));
+		goAway(arrows.findActor(id));
+		for (Actor actor : paths.getChildren()) {
+			if (actor.getName() != null && actor.getName().contains(id)) {
+				goAway(actor);
+			}
+		}
+	}
+
+	private void goAway(Actor actor) {
+		float randomTime = (float) (Math.random() * 5.0f + 10.0f);
+		float signum = Math.random() > 0.5f ? -1.0f : 1.0f;
+		actor.addAction(Actions.sequence(Actions.delay(0.3f), Actions.parallel(Actions.moveBy(-LudumDare.WIDTH, 0, randomTime), Actions.rotateBy(360 * signum, randomTime)), Actions.removeActor()));
+	}
+
 	@Override
 	public void message(String message) {
+
+	}
+
+	@Override
+	public void sound(String sound) {
 
 	}
 
@@ -220,11 +250,11 @@ public class Scene extends Group implements NodeListener {
 	private Actor[] createNodeActor(Node parent, Node node, int index, int total) {
 		if (columns.findActor(node.getId()) != null) {
 			return new Actor[]{
-					columns.findActor(node.getId()), floors.findActor(node.getId())
+					columns.findActor(node.getId()), floors.findActor(node.getId()), null
 			};
 		}
 
-		float ySpace = total == 1 ? 1 : LudumDare.HEIGHT * 0.5f;
+		float ySpace = total == 1 ? 1 : LudumDare.HEIGHT * 0.4f;
 		float yDepthOffset = 100;
 
 
@@ -304,6 +334,7 @@ public class Scene extends Group implements NodeListener {
 	}
 
 	private void select(Node node) {
+		this.selected = node;
 		Actor nodeActor = columns.findActor(node.getId());
 		player.addAction(Actions.moveTo(nodeActor.getX(), nodeActor.getY() + player.getHeight() / 3.0f, PLAYER_TIME));
 
@@ -316,7 +347,7 @@ public class Scene extends Group implements NodeListener {
 
 	private void centerAt(Node node) {
 		Actor nodeActor = columns.findActor(node.getId());
-		addAction(Actions.moveTo(getWidth() / DIVISION_FACTOR - nodeActor.getX(), getHeight() / 2.0f - nodeActor.getY(), 0.5f));
+		addAction(Actions.moveTo(getWidth() / DIVISION_FACTOR - nodeActor.getX(), getHeight() / 2.0f - nodeActor.getY() - 40.0f, 0.5f));
 	}
 
 	private Actor createIncident(IncidentNode node) {

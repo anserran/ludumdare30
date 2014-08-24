@@ -88,6 +88,11 @@ public class NodeRenderer extends Group implements NodeListener {
 	}
 
 	@Override
+	public void sound(String sound) {
+
+	}
+
+	@Override
 	public void ended() {
 
 	}

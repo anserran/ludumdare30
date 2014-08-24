@@ -229,7 +229,11 @@ public class Scene extends Group implements NodeListener {
 	private void goAway(Actor actor) {
 		float randomTime = (float) (Math.random() * 5.0f + 10.0f);
 		float signum = Math.random() > 0.5f ? -1.0f : 1.0f;
-		actor.addAction(Actions.sequence(Actions.delay(0.3f), Actions.parallel(Actions.moveBy(-LudumDare.WIDTH, 0, randomTime), Actions.rotateBy(360 * signum, randomTime)), Actions.removeActor()));
+		actor.addAction(Actions.sequence(vibrate(), Actions.parallel(Actions.moveBy(-LudumDare.WIDTH, 0, randomTime), Actions.rotateBy(360 * signum, randomTime)), Actions.removeActor()));
+	}
+
+	private Action vibrate(){
+		return Actions.sequence(Actions.delay(0.5f), Actions.parallel(Actions.repeat(5, Actions.sequence(Actions.moveBy(-2.0f, -4.0f, 0.05f), Actions.moveBy(2.0f, 4.0f, 0.05f)))));
 	}
 
 	@Override

@@ -123,7 +123,8 @@ public class GraphController implements VarListener {
 		Node nextNode;
 		if (characterData.get(Var.age) >= MAX_AGE || characterData.get(Var.health) <= 0) {
 			nextNode = new DeathNode();
-		} else if (characterData.get(Var.nodes) >= characterData.get(Var.age) * NODES_FOR_BIRTHDAY) {
+		} else if (characterData.get(Var.nodes) >= NODES_FOR_BIRTHDAY) {
+			characterData.set(Var.nodes, 0);
 			nextNode = birthdayGenerator.generate(characterData);
 		} else {
 			NodeGenerator nodeGenerator = (NodeGenerator) randomGenerator.random();
@@ -152,6 +153,7 @@ public class GraphController implements VarListener {
 
 	private void selected(Node selected) {
 		processNode(selected);
+		notifySound("destroy.wav");
 	}
 
 	private void notifySelected(Node parent, Node selected, boolean demon, boolean gotoNode) {
@@ -189,7 +191,7 @@ public class GraphController implements VarListener {
 		if (selected != null && selected.getHappening() != null) {
 			notifyMessage(selected.getHappening().getMessage());
 			String sound = selected.getHappening().getSound();
-			if ( sound != null ){
+			if (sound != null) {
 				notifySound(sound);
 			}
 		}

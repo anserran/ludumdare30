@@ -183,11 +183,11 @@ public class LudumDare implements ApplicationListener {
 
 	private void loadAssets() {
 		String[] sounds = new String[]{
-				"birthday", "health", "money", "love", "demon"
+				"birthday", "health", "money", "love", "demon", "destroy.wav"
 		};
 
 		for (String sound : sounds) {
-			assetManager.load(sound + ".mp3", Sound.class);
+			assetManager.load(sound.endsWith(".wav") ? sound : sound + ".mp3", Sound.class);
 		}
 
 		assetManager.load("skin.json", Skin.class);

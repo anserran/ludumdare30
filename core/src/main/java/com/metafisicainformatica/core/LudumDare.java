@@ -38,7 +38,7 @@ public class LudumDare implements ApplicationListener {
 	private Happenings happenings;
 	private AssetManager assetManager;
 	private Scene scene;
-	private boolean debug = true;
+	private boolean debug = false;
 
 
 	@Override

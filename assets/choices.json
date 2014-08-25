@@ -37,6 +37,8 @@
   },
   {
     "id": "love-health-money",
+    "repetitions": -1,
+    "probability": 0.2,
     "choices": [
       "love",
       "health",
@@ -76,6 +78,53 @@
     "choices": [
       "wife",
       "nothing"
+    ]
+  },
+  {
+    "id": "car-crash-choice-demon",
+    "probability": 0.5,
+    "choices": [
+      "car-crash",
+      "nothing"
+    ],
+    "hasDemon": true,
+    "repetitions": 2
+  },
+  {
+    "id": "car-crash-choice",
+    "probability": 0.5,
+    "choices": [
+      "car-crash",
+      "nothing"
+    ],
+    "repetitions": 2
+  },
+  {
+    "id": "death-choice",
+    "message": "Life is so hard some times...",
+    "repetitions": 4,
+    "probability": 0.2,
+    "choices": [
+      "sudden-accidental-death",
+      "take-drugs"
+    ]
+  },
+  {
+    "id": "health-or-drugs",
+    "repetitions": 10,
+    "probability": 0.7,
+    "choices": [
+      "go-to-gym",
+      "take-drugs"
+    ]
+  },
+  {
+    "id": "love-choice",
+    "repetitions": 4,
+    "probability": 0.7,
+    "choices": [
+      "find-a-lover",
+      "call-your-ex"
     ]
   }
 ]

@@ -108,7 +108,7 @@ public class CharacterData {
 		set(Var.score, 0);
 		set(Var.visibility, 1);
 		set(Var.age, 0);
-		set(Var.health, 200);
+		set(Var.health, 100);
 		set(Var.love, 10);
 		set(Var.nodes, 0);
 		set(Var.money, 0);

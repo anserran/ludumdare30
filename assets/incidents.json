@@ -81,6 +81,7 @@
     "id": "cross-street",
     "name": "Cross street without looking",
     "message": "Ouch!",
+    "drawable": "sm-health-bad",
     "probability": 0.08,
     "repetitions": -1,
     "changes": {
@@ -88,13 +89,14 @@
     }
   },
   {
-    "id": "car_crash",
+    "id": "car-crash",
     "name": "Car crash",
+    "drawable": "sm-health-bad",
     "message": "Ouch!",
     "probability": 0.05,
     "repetitions": 3,
     "changes": {
-      "health": -100
+      "health": -50
     },
     "influence": {
       "age": 0.1,
@@ -103,8 +105,9 @@
   },
   {
     "name": "Win lottery",
-    "drawable": "sm-money",
     "message": "OMG! Really?? OMG! You're rich!",
+    "drawable": "sm-money",
+    "sound": "money.mp3",
     "changes": {
       "money": 100
     },
@@ -115,6 +118,8 @@
   {
     "id": "go-to-gym",
     "name": "Go to gym",
+    "sound": "health.mp3",
+    "drawable": "sm-health",
     "repetitions": -1,
     "probability": 0.3,
     "changes": {
@@ -126,6 +131,7 @@
     "id": "work-more",
     "name": "Work more",
     "drawable": "sm-money",
+    "sound": "money.mp3",
     "probability": 0.25,
     "repetitions": -1,
     "changes": {
@@ -136,10 +142,59 @@
   {
     "id": "play-fire",
     "name": "Play with fire",
+    "sound": "love.mp3",
+    "drawable": "sm-health-bad",
     "probability": 0.1,
     "repetitions": -1,
     "changes": {
-      "health": -2
+      "health": -5
+    }
+  },
+  {
+    "id": "take-drugs",
+    "name": "Do drugs",
+    "drawable": "sm-health-bad",
+    "message": "Drugs are never the answer",
+    "probability": 0.25,
+    "repetitions": 3,
+    "changes": {
+      "health": -10
+    },
+    "influence": {
+      "age": 0.1,
+      "money": 1.0
+    }
+  },
+  {
+    "id": "sudden-accidental-death",
+    "name": "Sudden accidental death",
+    "drawable": "sm-health-bad",
+    "message": "Well... Not much time left.",
+    "probability": 0.09,
+    "repetitions": 3,
+    "changes": {
+      "health": -1000
+    }
+  },
+  {
+    "id": "find-a-lover",
+    "name": "Find a lover",
+    "sound": "love.mp3",
+    "drawable": "sm-love",
+    "repetitions": 7,
+    "probability": 0.7,
+    "changes": {
+      "love": 5
+    }
+  },
+  {
+    "id": "call-your-ex",
+    "name": "Call your ex",
+    "drawable": "sm-love-bad",
+    "repetitions": 7,
+    "probability": 0.7,
+    "changes": {
+      "love": -5
     }
   }
 ]

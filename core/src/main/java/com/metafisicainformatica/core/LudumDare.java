@@ -22,6 +22,8 @@ import com.metafisicainformatica.core.view.NodeRenderer;
 import com.metafisicainformatica.core.view.hud.Hud;
 import com.metafisicainformatica.core.view.scene.Scene;
 
+import java.util.Random;
+
 public class LudumDare implements ApplicationListener {
 
 	public static int WIDTH = 1066, HEIGHT = 600;
@@ -76,6 +78,9 @@ public class LudumDare implements ApplicationListener {
 		Gdx.input.setInputProcessor(stage);
 
 		stage.addListener(new InputListener() {
+
+			private Random random = new Random(System.currentTimeMillis());
+
 			@Override
 			public boolean keyDown(InputEvent event, int keycode) {
 				switch (keycode) {
@@ -110,7 +115,7 @@ public class LudumDare implements ApplicationListener {
 					case Keys.K:
 						if (debug) {
 							for (int i = 0; i < 20; i++) {
-								graphController.nextNode(0);
+								graphController.nextNode(random.nextInt(Math.max(1, graphController.getCurrentNode().childrenCount())));
 							}
 						}
 						break;

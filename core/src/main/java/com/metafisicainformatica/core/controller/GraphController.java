@@ -44,8 +44,8 @@ public class GraphController implements VarListener {
 		this.happenings = happenings;
 
 		this.birthdayGenerator = new BirthdayGenerator(happenings);
-		randomGenerator.add(0.4f, new ChoicesGenerator(happenings));
-		randomGenerator.add(0.1f, new WalkGenerator(happenings));
+		randomGenerator.add(0.45f, new ChoicesGenerator(happenings));
+		randomGenerator.add(0.05f, new WalkGenerator(happenings));
 		randomGenerator.add(0.6f, new InicidentGenerator(happenings));
 	}
 
